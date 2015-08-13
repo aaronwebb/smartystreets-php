@@ -19,7 +19,7 @@ class Client
      * The base URL for the SmartyStreets API.
      *
      */
-    const BASE_URL = 'https://api.smartystreets.com/';
+    const BASE_URL = 'https://api.smartystreets.com';
 
     /**
      *
@@ -97,7 +97,7 @@ class Client
      */
     public function get($path, array $params)
     {
-        $response = $this->client->get($this->getPath($path, http_build_query($params)));
+        $response = $this->client->get($this->getPath($path, $params));
         $response = $this->processResponse($response);
 
         return $response;
@@ -178,6 +178,6 @@ class Client
      */
     private function getStatus(ResponseInterface $response)
     {
-        return $response->getHeader('status')[0];
+        return $response->getStatusCode();
     }
 }
