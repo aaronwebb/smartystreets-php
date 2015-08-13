@@ -52,10 +52,14 @@ class StreetAddress extends AbstractApi
     public function validate(AddressInput $address)
     {
         $response = $this->client->get('/street-address', $address->toArray());
-        $response = json_decode($response, true);
-        $response = $response[0];
+        $candidates = json_decode($response, true);
 
-        return $this->factory->newOutput($response);
+        $output = array();
+        foreach ($candidates as $candidate) {
+            $output[] = $this->factory->newOutput($candidate);
+        }
+
+        return $output;
     }
 
     /**

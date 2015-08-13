@@ -57,7 +57,8 @@ class StreetAddressTest extends \PHPUnit_Framework_TestCase
             null
         ));
 
-        $this->assertInstanceOf('SmartyStreets\Api\StreetAddress\AddressOutput', $output);
+        $this->assertTrue(is_array($output));
+        $this->assertInstanceOf('SmartyStreets\Api\StreetAddress\AddressOutput', $output[0]);
     }
 
     public function testAddressBatchValidation()
