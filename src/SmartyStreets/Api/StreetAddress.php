@@ -46,7 +46,7 @@ class StreetAddress extends AbstractApi
      *
      * @param AddressInput $address The address to be verified.
      *
-     * @return AddressOutput The verified response.
+     * @return AddressOutput[] The verified response.
      *
      */
     public function validate(AddressInput $address)
